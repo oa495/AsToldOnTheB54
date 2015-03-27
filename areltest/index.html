@@ -4,24 +4,23 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- Integrates the arel javascript bridge -->
- 	    <script type="text/javascript" src="arel.js"></script>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <script type="text/javascript" src="http://dev.junaio.com/arel/js/arel.js"></script>
   		<script type="text/javascript" src="script.js"></script>
+  		<script type="text/javascript" src="arel_plugin_social_v1.js"></script>
  	    <link rel="stylesheet" type="text/css" href="styles.css">
- 	    <link rel="stylesheet" href="animate.css">
  	    <!-- Includes application logic -->
-  		 <title>AREL template</title>
+  		 <title>As Told on the B54</title>
 	</head>
-<body>
-	<div class="instruction-page" id="instruction-p"> 
-		<ul class="instruction-list" id="instruction-list">
-			<img class="list-image" src ="images/camera.png"/>
-			<li class="instruction" id="instruction">Point your camera.</li>
-			<img class="list-image" src ="images/finger.png"/>
-			<li class="instruction" id="instruction">Tap the screen.</li>
-			<img class="list-image"  src ="images/glasses.png"/>
-			<li class="instruction" id="instruction">See the story.</li>
-			<button onclick="setToTransparent()">Start!</button>
-		<ul>
-	</div>
+<body class="fp">
+		<main class="opening">
+			<img class="app-icon" src ="images/glasses.png"/>
+			<button class="start">START</button>
+		</main>
+		<p class="instruction"> Find a human being.</p>
+		<p class="instruction-2"> Try to keep the camera still.</p>
+		<p class="instruction-3"> If nothing shows up, click at the bottom of the screen.</p>
+		<p class="convo1 left">hiiiii</p>
+		<p class="convo2 right"></p>
 </body>
 </html>
