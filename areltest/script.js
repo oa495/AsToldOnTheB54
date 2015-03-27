@@ -47,7 +47,8 @@ $(document).ready(function(){
                    });
                   }
                });
-              }
+            }
+             addConvoClasses();
        });
    });
  });
@@ -66,6 +67,13 @@ var addTextByDelay = function(story,elem,delay){
              },delay                 
             );
     }
+}
+function addConvoClasses() {
+  var person1 = document.getElementById("person1");
+  var person2 = document.getElementById("person2");
+  person1.className = "convo1 left";
+  person2.className = "convo2 right";
+  //add paragraph tag as well
 }
 function share(button)
   {
