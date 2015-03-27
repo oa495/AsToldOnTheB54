@@ -121,5 +121,11 @@ li {
 .convo2.right:after {
   right:12%; /* value = - border-left-width - border-right-width */
 }
-
-
+.narration {
+    display: none;
+	position: absolute;
+	background-color: rgba(163,225,250, 0.5);
+	width: 100%;
+	height: 20%;
+	bottom: 0px;
+}

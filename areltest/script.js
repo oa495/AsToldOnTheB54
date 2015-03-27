@@ -1,8 +1,11 @@
-var story = "She has been on her phone for the last 5 minutes with her boyfriend trying to figure out who should hang up first.";
+
+var backgroundStory = "She has been on her phone for the last 5 minutes with her boyfriend trying to figure out who should hang up first.";
+var speech1 = "Hey, isn't this your stop?";
+var speech2 = "Oh yeah... thank you";
 var delay = 50;
-var elem;
-var convoStarted = false;
-var instruction = 0;
+var person1;
+var person2;
+
 arel.ready(function() 
 {
     //debug
@@ -42,16 +45,22 @@ $(document).ready(function(){
                         if ($(".instruction-3").css('display') == 'none') {
                          $(".instruction-3").delay(600).fadeIn("slow");
                          $(".instruction-3").delay(2000).fadeOut("slow");
-                         console.log("here!");
+                        // console.log("here!");
                         }
                    });
                   }
                });
             }
-             addConvoClasses();
+          //  var instruction = document.getElementById('instructions');
+         //   instruction.addEventListener("click", function(){
+                addConvoClasses();
+                addNarration();
+         //   });
+
        });
    });
  });
+
 
 var addTextByDelay = function(story,elem,delay){
     if(!delay){
@@ -68,12 +77,17 @@ var addTextByDelay = function(story,elem,delay){
             );
     }
 }
+function addNarration() {
+  if ($(".narration").css('display') == 'none') {
+       $(".narration").delay(10000).show("slow") 
+        console.log("here!");   
+  } 
+}
 function addConvoClasses() {
-  var person1 = document.getElementById("person1");
-  var person2 = document.getElementById("person2");
+  person1 = document.getElementById("person1");
+  person2 = document.getElementById("person2");
   person1.className = "convo1 left";
   person2.className = "convo2 right";
-  //add paragraph tag as well
 }
 function share(button)
   {
