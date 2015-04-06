@@ -4,8 +4,8 @@ var person2;
 var called = false;
 var scene = 1;
 var dialogue = 1;
-var bubble1 = new Array();
-var bubble2 = new Array();
+var bubble1;
+var bubble2;
 arel.ready(function() 
 {
     //debug
@@ -64,6 +64,8 @@ function opening() {
 function startConversation() {
   console.log("done.");
   console.log(scene);
+  if (scene === 1) {
+    var i = 0;
       var narration = $(".narration");
       var person1 = $("#person1");
       var person2 = $("#person2");
@@ -71,60 +73,51 @@ function startConversation() {
      addTextByDelay(backgroundStory, narration, 50);
      bubble1 = ["Oh, Gone Girl. That’s a good one. Have you seen the movie?", "….I was asking if you’ve seen the movie. Gone Girl.", "I wish I could do that. I’ve never considered myself much of a reader.", "Mmm", "Maybe I will."];
      bubble2 = ["Sorry what?", "Oh no, I haven’t. I wanted to read the book first. The books are always so much better.", "I didn’t either but then one of my friends went to the bookstore, bought me this one and literally dropped it on my bed and told me to read it. So I did.", "It’s really fun when you get into it."];
-
-     var starttime = 12000;
-     var biginterval = 8000;
-     var i = 0;
-     var t;
-     //for(var i = 0;i<bubble1.length;i++)
-     //{
-
-        console.log(bubble1[0]);
+     while (scene === 1) {
+        console.log("scene = 1!!!!!!!")
+        if (dialogue === 1) {
         setTimeout(function() {
-            addTextByDelay(bubble1[0], person1, 50);
-        }, starttime+(i*biginterval));
-
-        console.log(bubble2[0]);
+            addTextByDelay(bubble1[i], person1, 50);
+        }, 12000);
         setTimeout(function() {
-            addTextByDelay(bubble2[0], person2, 50);
-        }, starttime+(i*biginterval)+2000);
-
+            addTextByDelay(bubble2[i], person2, 50);
+        }, 16000);
         setTimeout(function() {
             removeText(person1);
-           }, starttime+(i*biginterval)+4000);
-
+           }, 22000);
         setTimeout(function() {
           removeText(person2);
-        }, starttime+(i*biginterval)+6000);
-
-        i = 1;
-
-        console.log(bubble1[1]);
-        setTimeout(function() {
-            addTextByDelay(bubble1[1], person1, 50);
-        }, starttime+(i*biginterval));
-
-        console.log(bubble2[1]);
-        setTimeout(function() {
-            addTextByDelay(bubble2[1], person2, 50);
-        }, starttime+(i*biginterval)+2000);
-
-        setTimeout(function() {
-            removeText(person1);
-           }, starttime+(i*biginterval)+4000);
-
-        setTimeout(function() {
-          removeText(person2);
-        }, starttime+(i*biginterval)+6000);
-
-     //}
-
+       //   dialogue = 2;
+       //   i = 1;
+          console.log("x");
+        }, 22000);
+    }
+       else if (dialogue === 2) {
+            console.log("part 2!");
+            setTimeout(function() {
+            addTextByDelay(bubble1[i], person1, 50);
+            }, 27000);
+            setTimeout(function() {
+                addTextByDelay(bubble2[i], person2, 50);
+            }, 29000);
+            //  i=2;
+           //   dialogue = 3;
+           scene = 2;
+     }
+  }
+ // 
+  }
+  else if (scene === 2) {
+  }
+  else if (scene === 3) {
+   }
+  else if (scene === 4) {
+    }
 }
 
 
 
 var addTextByDelay = function(story,elem,delay){
-    //console.log(story);
     if(!delay){
         delay = 50;
     }

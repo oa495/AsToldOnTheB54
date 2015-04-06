@@ -125,7 +125,11 @@ li {
     display: none;
 	position: absolute;
 	background-color: rgba(163,225,250, 0.5);
+	text-align: left;
+	padding: 5px;
+	line-height: 175%;
 	width: 100%;
 	height: 20%;
 	bottom: 0px;
 }
+
