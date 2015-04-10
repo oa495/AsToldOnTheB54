@@ -6,8 +6,15 @@ var scene = 1;
 var dialogue = 1;
 var bubble1 = new Array();
 var bubble2 = new Array();
+
+var marker1Detected = false;
+var marker2Detected = false;
 arel.ready(function() 
 {
+     console.log("yk!");
+     opening();
+     arel.Events.setListener(arel.Scene, function(type, param){trackingHandler(type, param);});
+     arel.Scene.getTrackingValues(function(trackingValues){receiveTrackingStatus(trackingValues);});
     //debug
    // arel.Debug.activate();
   var social = new arel.Plugin.Social();
@@ -22,16 +29,62 @@ arel.ready(function()
 
   // adds a facebook-share-button to the HTML-Overlay of the channel with a custom urlToShare
   social.addFacebookShareButton(urlToShare);
+
 });
 
-function setToTransparent() {
-   // document.body.style.background = 'transparent';
-}
-$(document).ready(function(){
-  opening();
- });
+//callback funtion
 
+function trackingHandler(type, param)
+{
+   console.log("z!");
+    //check if there is tracking information available
+    if(param[0] !== undefined)
+    {
+        //if the pattern is found, hide the information to hold your phone over the pattern
+        if(type && type == arel.Events.Scene.ONTRACKING && param[0].getState() == arel.Tracking.STATE_TRACKING)
+        {
+           marker1Detected = true;
+           marker2Detected = true;
+        }
+        //if the pattern is lost tracking, show the information to hold your phone over the pattern
+        else if(type && type == arel.Events.Scene.ONTRACKING && param[0].getState() == arel.Tracking.STATE_NOTTRACKING)
+        {
+             $(".instruction-3").delay(600).fadeIn("slow");
+             //$(".instruction-3").delay(2000).fadeOut("slow");
+        }
+    }
+};
+function receiveTrackingStatus(trackingValues)
+{
+   console.log("i!");
+    arel.Scene.setTrackingConfiguration(trackingData2.zip);
+    if(trackingValues[0] !== undefined) {         
+        var trans = trackingValues[0].getTranslation();
+        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 0, function(position, 0) {
+          changeBubblePosition();
+        })
+      }
+    if(trackingValues[1] !== undefined) {         
+        var trans = trackingValues[1].getTranslation();
+        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 1, function(position, 1) {
+          changeBubblePosition();
+        })
+      }
+};
+function changeBubblePosition(position, index) {
+      if (index === 0) {
+        var bubble1x = position.getX() / 2;
+        var bubble2y = position.getY() / 2;
+        person1.style.bottom = y + "px";
+      }
+      else if (index === 1) {
+         var bubble2x = position.getX() / 2;
+         var bubble2y = position.getY() / 2;
+         person2.style.bottom = y + "px";
+      }
+}
 function opening() {
+   console.log("y!");
   $(".start").click(function(){
           $(".opening").fadeOut(function(){
              /*console.log("hii!!"); */
@@ -40,17 +93,19 @@ function opening() {
              console.log(x.className); */
                 if ($(".instruction").css('display') == 'none') {
                  $(".instruction").delay(600).fadeIn("slow");
-                 $(".instruction").delay(1000).fadeOut("slow", function () {
+                 $(".instruction").delay(2000).fadeOut("slow", function () {
                    // body...
                    if ($(".instruction-2").css('display') == 'none') {
                      $(".instruction-2").delay(600).fadeIn("slow");
                        console.log("here!");
-                     $(".instruction-2").delay(1000).fadeOut("slow", function() {
+                     $(".instruction-2").delay(2000).fadeOut("slow", function() {
                           if ($(".instruction-3").css('display') == 'none') {
                            $(".instruction-3").delay(600).fadeIn("slow");
-                           $(".instruction-3").delay(1000).fadeOut("slow", function() {
+                           $(".instruction-3").delay(2000).fadeOut("slow", function() {
+                                if (marker1Detected && marker2Detected) {
                                  addConvoClasses();
                                  addNarration(); 
+                                }
                            });
                           // console.log("here!");
                           }
@@ -73,7 +128,7 @@ function startConversation() {
      bubble2 = ["Sorry what?", "Oh no, I haven’t. I wanted to read the book first. The books are always so much better.", "I didn’t either but then one of my friends went to the bookstore, bought me this one and literally dropped it on my bed and told me to read it. So I did.", "It’s really fun when you get into it."];
 
      var starttime = 12000;
-     var biginterval = 8000;
+     var biginterval = 9000;
      var i = 0;
      var t;
      //for(var i = 0;i<bubble1.length;i++)
@@ -163,7 +218,5 @@ function share(button)
     button.style.backgroundColor='#fff';
     arel.Scene.shareScreenshot();
   }
-
-
 
 
