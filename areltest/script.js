@@ -1,3 +1,7 @@
+var today = new Date();
+var daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+var dayOfWeek = today.getDay();
+dayOfWeekInText = convertToDay(dayOfWeek);
 var delay = 50;
 var person1;
 var person2;
@@ -49,8 +53,9 @@ function trackingHandler(type, param)
         //if the pattern is lost tracking, show the information to hold your phone over the pattern
         else if(type && type == arel.Events.Scene.ONTRACKING && param[0].getState() == arel.Tracking.STATE_NOTTRACKING)
         {
-             $(".instruction-3").delay(600).fadeIn("slow");
-             //$(".instruction-3").delay(2000).fadeOut("slow");
+             
+
+             
         }
     }
 };
@@ -60,28 +65,29 @@ function receiveTrackingStatus(trackingValues)
     arel.Scene.setTrackingConfiguration(trackingData2.zip);
     if(trackingValues[0] !== undefined) {         
         var trans = trackingValues[0].getTranslation();
-        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 0, function(position, 0) {
-          changeBubblePosition();
+        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 0, function(position) {
+          changeBubblePosition(0);
+
         })
       }
-    if(trackingValues[1] !== undefined) {         
+  /*  if(trackingValues[1] !== undefined) {         
         var trans = trackingValues[1].getTranslation();
-        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 1, function(position, 1) {
-          changeBubblePosition();
+        arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 1, function(position) {
+          changeBubblePosition(1);
         })
-      }
+      }*/
 };
-function changeBubblePosition(position, index) {
-      if (index === 0) {
+function changeBubblePosition(position) {
+     // if (index === 0) {
         var bubble1x = position.getX() / 2;
         var bubble2y = position.getY() / 2;
         person1.style.bottom = y + "px";
-      }
-      else if (index === 1) {
-         var bubble2x = position.getX() / 2;
-         var bubble2y = position.getY() / 2;
+    //  }
+   //   else if (index === 1) {
+   //      var bubble2x = position.getX() / 2;
+   //      var bubble2y = position.getY() / 2;
          person2.style.bottom = y + "px";
-      }
+    //  }
 }
 function opening() {
    console.log("y!");
@@ -122,13 +128,35 @@ function startConversation() {
       var narration = $(".narration");
       var person1 = $("#person1");
       var person2 = $("#person2");
-      backgroundStory = "He’d been looking at her for some time as he held on to the pole of the bus, swaying and shifting as the bus abruptly stopped and accelerated. His eyes lit up as he saw his chance. A seat finally opened up right beside her.";
-     addTextByDelay(backgroundStory, narration, 50);
-     bubble1 = ["Oh, Gone Girl. That’s a good one. Have you seen the movie?", "….I was asking if you’ve seen the movie. Gone Girl.", "I wish I could do that. I’ve never considered myself much of a reader.", "Mmm", "Maybe I will."];
-     bubble2 = ["Sorry what?", "Oh no, I haven’t. I wanted to read the book first. The books are always so much better.", "I didn’t either but then one of my friends went to the bookstore, bought me this one and literally dropped it on my bed and told me to read it. So I did.", "It’s really fun when you get into it."];
 
+       // if (dayOfWeek === 'Monday') {
+           backgroundStory = "He’d been looking at her for some time as he held on to the pole of the bus, swaying and shifting as the bus abruptly stopped and accelerated. His eyes lit up as he saw his chance. A seat finally opened up right beside her.";
+           addTextByDelay(backgroundStory, narration, 50);
+           bubble1 = ["Oh, Gone Girl. That’s a good one. Have you seen the movie?", "….I was asking if you’ve seen the movie. Gone Girl.", "I wish I could do that. I’ve never considered myself much of a reader.", "Mmm", "Maybe I will."];
+           bubble2 = ["Sorry what?", "Oh no, I haven’t. I wanted to read the book first. The books are always so much better.", "I didn’t either but then one of my friends went to the bookstore, bought me this one and literally dropped it on my bed and told me to read it. So I did.", "It’s really fun when you get into it."];
+      // }
+      /* else if (dayOfWeek === 'Tuesday') {
+            bubble1 = ["Hi there.", "Well, it would’ve been hard for me to take this bus everyday considering I lived in Boston.",
+             "Yeah, I felt like I needed a little New York hostility in my life that’s all.", "How long have you been here?", "Really? Not even once? .......................................Any particular reason?", "Oh, understandable.", "
+             No! Not at all. Um…I mean what’s the reason to leave if you feel like you have everything you want right here with you…I guess I always travelled and moved because I was looking for something. But then if you have that something there’s no reason to move right?", ""]
+       }
+       else if (dayOfWeek === 'Wednesday') {
+
+       }
+       else if (dayOfWeek === 'Thursday') {
+
+       }
+       else if (dayOfWeek === 'Friday') {
+
+       }
+       else if (dayOfWeek === 'Saturday') {
+        
+       }
+       else if (dayOfWeek === 'Sunday') {
+        
+       } */
      var starttime = 12000;
-     var biginterval = 9000;
+     var biginterval = 10000;
      var i = 0;
      var t;
      //for(var i = 0;i<bubble1.length;i++)
@@ -142,7 +170,7 @@ function startConversation() {
         console.log(bubble2[0]);
         setTimeout(function() {
             addTextByDelay(bubble2[0], person2, 50);
-        }, starttime+(i*biginterval)+2000);
+        }, starttime+(i*biginterval)+3000);
 
         setTimeout(function() {
             removeText(person1);
@@ -162,7 +190,68 @@ function startConversation() {
         console.log(bubble2[1]);
         setTimeout(function() {
             addTextByDelay(bubble2[1], person2, 50);
-        }, starttime+(i*biginterval)+2000);
+        }, starttime+(i*biginterval)+3000);
+
+        setTimeout(function() {
+            removeText(person1);
+           }, starttime+(i*biginterval)+4000);
+
+        setTimeout(function() {
+          removeText(person2);
+        }, starttime+(i*biginterval)+6000);
+
+        i = 2;
+
+        console.log(bubble1[2]);
+        setTimeout(function() {
+            addTextByDelay(bubble1[2], person1, 50);
+        }, starttime+(i*biginterval));
+
+        console.log(bubble2[2]);
+        setTimeout(function() {
+            addTextByDelay(bubble2[2], person2, 50);
+        }, starttime+(i*biginterval)+3000);
+
+        setTimeout(function() {
+            removeText(person1);
+           }, starttime+(i*biginterval)+4000);
+
+        setTimeout(function() {
+          removeText(person2);
+        }, starttime+(i*biginterval)+6000);
+
+        
+        i = 3;
+
+        console.log(bubble1[3]);
+        setTimeout(function() {
+            addTextByDelay(bubble1[3], person1, 50);
+        }, starttime+(i*biginterval));
+
+        console.log(bubble2[3]);
+        setTimeout(function() {
+            addTextByDelay(bubble2[3], person2, 50);
+        }, starttime+(i*biginterval)+3000);
+
+        setTimeout(function() {
+            removeText(person1);
+           }, starttime+(i*biginterval)+4000);
+
+        setTimeout(function() {
+          removeText(person2);
+        }, starttime+(i*biginterval)+6000);
+ 
+
+         i = 4;
+        console.log(bubble1[4]);
+        setTimeout(function() {
+            addTextByDelay(bubble1[4], person1, 50);
+        }, starttime+(i*biginterval));
+
+        console.log(bubble2[4]);
+        setTimeout(function() {
+            addTextByDelay(bubble2[4], person2, 50);
+        }, starttime+(i*biginterval)+3000);
 
         setTimeout(function() {
             removeText(person1);
@@ -181,7 +270,7 @@ function startConversation() {
 var addTextByDelay = function(story,elem,delay){
     //console.log(story);
     if(!delay){
-        delay = 50;
+        delay = 75;
     }
     if(story.length >0){
          // console.log("sup");
@@ -218,5 +307,28 @@ function share(button)
     button.style.backgroundColor='#fff';
     arel.Scene.shareScreenshot();
   }
-
+function convertToDay(dayOfWeek) {
+  if (dayOfWeek == 1) {
+    dayOfWeek = daysOfWeek[0];
+  }
+  else if (dayOfWeek == 2) {
+    dayOfWeek = daysOfWeek[1];
+  }
+  else if (dayOfWeek == 3) {
+    dayOfWeek = daysOfWeek[2];
+  }
+  else if (dayOfWeek == 4) {
+    dayOfWeek = daysOfWeek[3];
+  }
+  else if (dayOfWeek == 5) {
+    dayOfWeek = daysOfWeek[4];
+  }
+  else if (dayOfWeek == 6) {
+    dayOfWeek = daysOfWeek[5];
+  }
+  else if (dayOfWeek == 0) {
+    dayOfWeek = daysOfWeek[6];
+  }
+  return dayOfWeek;
+}
 
