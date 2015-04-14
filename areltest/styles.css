@@ -80,9 +80,9 @@ li {
 	bottom: 0px;
 }
 .convo1, .convo2{
-  
+ 
   width: 30%;
-  height: 100px;
+  height: 150px;
   position:relative;
   padding:10px;
   margin:1em 0 3em;
@@ -123,7 +123,7 @@ li {
   right:12%; /* value = - border-left-width - border-right-width */
 }
 .narration {
-	font-size: 10px;
+	font-size: 180%;
     display: none;
 	position: absolute;
 	background-color: rgba(163,225,250, 0.5);
