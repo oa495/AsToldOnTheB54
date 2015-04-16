@@ -30,6 +30,10 @@ arel.ready(function()
    */
   
   // adds a twitter-button to the HTML-Overlay of the channel with a custom tweet-message
+       //  social.addTweetButton(tweetMessage);
+
+  // adds a facebook-share-button to the HTML-Overlay of the channel with a custom urlToShare
+     //  social.addFacebookShareButton(urlToShare);
 });
 //callback funtion
 
@@ -121,15 +125,15 @@ function opening() {
              console.log(x.className); */
                 if ($(".instruction").css('display') == 'none') {
                  $(".instruction").delay(600).fadeIn("slow");
-                 $(".instruction").delay(2000).fadeOut("slow", function () {
+                 $(".instruction").delay(4000).fadeOut("slow", function () {
                    // body...
                    if ($(".instruction-2").css('display') == 'none') {
                      $(".instruction-2").delay(600).fadeIn("slow");
                        console.log("here!");
-                     $(".instruction-2").delay(2000).fadeOut("slow", function() {
+                     $(".instruction-2").delay(4000).fadeOut("slow", function() {
                           if ($(".instruction-3").css('display') == 'none') {
                            $(".instruction-3").delay(600).fadeIn("slow");
-                           $(".instruction-3").delay(2000).fadeOut("slow", function() {
+                           $(".instruction-3").delay(4000).fadeOut("slow", function() {
                               //  if (marker1Detected && marker2Detected) {
                                  addConvoClasses();
                                  addNarration(); 
@@ -150,18 +154,17 @@ function startConversation() {
       var narration = $(".narration");
       var person1 = $("#person1");
       var person2 = $("#person2");
-      var starttime = 12000;
+      var starttime = 16000;
       var biginterval = 10000;
       var i = 0;
       var t;
-      console.log(dayOfWeek)
-        if (dayOfWeekInText === 'Monday') {
-           print("'yes!");
+      console.log(dayOfWeek);
+     /*  if (dayOfWeekInText === 'Monday') {
            backgroundStory = "He’d been looking at her for some time as he held on to the pole of the bus, swaying and shifting as the bus abruptly stopped and accelerated. His eyes lit up as he saw his chance. A seat finally opened up right beside her. He looked at the book she was reading and tried to unearth some association with it.";
            addTextByDelay(backgroundStory, narration, 50);
            bubble1 = ["Oh, Gone Girl. That’s a good one. Have you seen the movie?", "..........I was asking if you’ve seen the movie. Gone Girl.", "Ah I saw it by myself this weekend and I’ve been trying to find someone to talk to about that ending.", "Um um yeah I’m sorry I just thought.....", "I won’t talk to you about the movie. Promise. What’s your name?", "Joffrey."];
            bubble2 = ["Sorry what?", "Oh no, I haven’t. I wanted to read the book first. The books are always so much better.", "And you decided on some random girl in the bus?", "I’m only kidding. But you can’t talk to me.......about the book. Otherwise, sure. Yeah.", "Alice."];
-           console.log(bubble1[0]);
+         //  console.log(bubble1[0]);
           setTimeout(function() {
               addTextByDelay(bubble1[0], person1, 50);
           }, starttime+(i*biginterval));
@@ -173,11 +176,11 @@ function startConversation() {
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+7000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+9000);
 
           i = 1;
 
@@ -189,15 +192,16 @@ function startConversation() {
           console.log(bubble2[1]);
           setTimeout(function() {
               addTextByDelay(bubble2[1], person2, 50);
-          }, starttime+(i*biginterval)+3000);
+          }, starttime+(i*biginterval)+4000);
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+7000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+9000);
+
 
           i = 2;
 
@@ -209,15 +213,15 @@ function startConversation() {
           console.log(bubble2[2]);
           setTimeout(function() {
               addTextByDelay(bubble2[2], person2, 50);
-          }, starttime+(i*biginterval)+3000);
+          }, starttime+(i*biginterval)+6000);
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+8000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+10000);
 
           
           i = 3;
@@ -234,46 +238,53 @@ function startConversation() {
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+10000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+12000);
    
-
            i = 4;
           console.log(bubble1[4]);
           setTimeout(function() {
-              addTextByDelay(bubble1[i], person1, 50);
+              addTextByDelay(bubble1[4], person1, 50);
           }, starttime+(i*biginterval));
 
-          console.log(bubble2[i]);
+          console.log(bubble2[4]);
           setTimeout(function() {
-              addTextByDelay(bubble2[i], person2, 50);
-          }, starttime+(i*biginterval)+3000);
+              addTextByDelay(bubble2[4], person2, 50);
+          }, starttime+(i*biginterval)+5000);
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+8000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+10000);
 
-           i = 5;
-            setTimeout(function() {
-              addTextByDelay(bubble1[i], person1, 50);
+          i = 5;
+           console.log(bubble1[5]);
+          setTimeout(function() {
+              addTextByDelay(bubble1[5], person1, 50);
           }, starttime+(i*biginterval));
 
-            setTimeout(function() {
+          setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+4600);
 
-       }
-      else if (dayOfWeekInText === 'Tuesday') {
-            bubble1 = ["Hi there.", "What? No book today? Are you done already?", "Oh wow. Ouch. I wouldn’t say mediocre. More like…. Ordinary.", "Fair enough. So what can I do to make this conversation… not mediocre?", "I don’t know. I guess that’s the way things have always been. Also, apart from the few times I’ve creeped on you from the back of the bus, this is the 2nd time I’m seeing you.", "That’s an interesting way to think about it.", "Um...........ok I got one. Why do you take this bus every morning?", "........................I don’t think I can think of anything else."];
+
+        setTimeout(function() {
+              removeText(narration);
+             }, starttime+(i*biginterval)+4600);
+
+        }*/
+    // else if (dayOfWeekInText === 'Tuesday') {
+            console.log("on a tuesday");
+            bubble1 = ["Hi there.", "What? No book today? Are you done already?", "Oh wow. Ouch. I wouldn’t say mediocre. More like…. Ordinary.", "Fair enough. So what can I do to make this conversation… not mediocre?", "I don’t know. I guess that’s the way things have always been. Also, apart from the few times I’ve creeped on you from the back of the bus, this is the 2nd time I’m seeing you.", "That’s an interesting way to think about it.", "Um...........ok I got one...Why do you take this bus every morning?", "You're right. That was pretty weak. It's hard to think of something...personal to ask someone."];
             bubble2 = ["Oooh hi! Nice to see you again.", "No. Not even close. I just forgot to take it with me today. Looks like I have to settle for mediocre conversation.", "Well exactly. It’s nothing compared to the world in the book.", "Well you can start by asking me some interesting questions. I mean, why do we have to start each day with so how was work yesterday or how are you?", "But then it’s better then! We don’t know each other. There’s probably no danger in us digging a little deeper. Who else are you going to share your big bad secrets with except some random girl on the bus?", "So...do you have any interesting questions for me?", "Because it’s the cheapest option. Next.", "It’s ok. I wasn't expecting much. It was a weird exercise."];
-             
+            backgroundStory = "She looked back at her phone dissapointedly and he put on his headphones. He looked up at her curiously at seemingly timed intervals until she got off. He didn't quite get her but he liked her."
+            starttime = 2000;
              setTimeout(function() {
               addTextByDelay(bubble1[0], person1, 50);
           }, starttime+(i*biginterval));
@@ -285,178 +296,180 @@ function startConversation() {
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+             }, starttime+(i*biginterval)+5000);
 
           setTimeout(function() {
             removeText(person2);
-          }, starttime+(i*biginterval)+6000);
+          }, starttime+(i*biginterval)+7000);
 
           i = 1;
-
-          console.log(bubble1[1]);
-          setTimeout(function() {
+            console.log(bubble1[1]);
+              setTimeout(function() {
               addTextByDelay(bubble1[1], person1, 50);
           }, starttime+(i*biginterval));
 
-          console.log(bubble2[1]);
-          setTimeout(function() {
+            console.log(bubble2[1]);
+              setTimeout(function() {
               addTextByDelay(bubble2[1], person2, 50);
           }, starttime+(i*biginterval)+3000);
 
-          setTimeout(function() {
+             setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
+           }, starttime+(i*biginterval)+8000);
 
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-
+            setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+12000);
+            
           i = 2;
-
           console.log(bubble1[2]);
-          setTimeout(function() {
+            setTimeout(function() {
               addTextByDelay(bubble1[2], person1, 50);
-          }, starttime+(i*biginterval));
+            }, starttime+(i*biginterval));
 
-          console.log(bubble2[2]);
-          setTimeout(function() {
+          console.log(bubble2[2])
+            setTimeout(function() {
               addTextByDelay(bubble2[2], person2, 50);
-          }, starttime+(i*biginterval)+3000);
+            }, starttime+(i*biginterval)+3000);
 
           setTimeout(function() {
               removeText(person1);
-             }, starttime+(i*biginterval)+4000);
-
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-
-          
-          i = 3;
-
-          console.log(bubble1[3]);
-          setTimeout(function() {
-              addTextByDelay(bubble1[3], person1, 50);
-          }, starttime+(i*biginterval));
-
-          console.log(bubble2[3]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[3], person2, 50);
-          }, starttime+(i*biginterval)+3000);
-
-          setTimeout(function() {
-              removeText(person1);
-             }, starttime+(i*biginterval)+4000);
-
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-   
-
-           i = 4;
-          console.log(bubble1[4]);
-          setTimeout(function() {
-              addTextByDelay(bubble1[4], person1, 50);
-          }, starttime+(i*biginterval));
-
-          console.log(bubble2[4]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[4], person2, 50);
-          }, starttime+(i*biginterval)+3000);
-
-          setTimeout(function() {
-              removeText(person1);
-             }, starttime+(i*biginterval)+4000);
-
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-
-          i = 5;
-          console.log(bubble1[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble1[i], person1, 50);
-          }, starttime+(i*biginterval));
-
-          console.log(bubble2[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[i], person2, 50);
-          }, starttime+(i*biginterval)+3000);
-
-          setTimeout(function() {
-              removeText(person1);
-             }, starttime+(i*biginterval)+4000);
-
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-
-          i = 6;
-
-          console.log(bubble1[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble1[i], person1, 50);
-          }, starttime+(i*biginterval));
-
-          console.log(bubble1[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[i], person2, 50);
-          }, starttime+(i*biginterval)+3000);
-
-          setTimeout(function() {
-              removeText(person1);
-             }, starttime+(i*biginterval)+4000);
-
-          setTimeout(function() {
-            removeText(person2);
-          }, starttime+(i*biginterval)+6000);
-
-          i = 7;
-
-             console.log(bubble1[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble1[i], person1, 50);
-          }, starttime+(i*biginterval));
-
-          console.log(bubble1[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[i], person2, 50);
-          }, starttime+(i*biginterval)+3000);
-
-          console.log(bubble2[i]);
-          setTimeout(function() {
-              addTextByDelay(bubble2[i], person2, 50);
-          }, starttime+(i*biginterval)+3000);
+          }, starttime+(i*biginterval)+8000);
 
           setTimeout(function() {
               removeText(person2);
-             }, starttime+(i*biginterval)+4000);
+           }, starttime+(i*biginterval)+10000);
 
-       }
+            i = 3;
+          console.log(bubble1[3]);
+            setTimeout(function() {
+              addTextByDelay(bubble1[3], person1, 50);
+            }, starttime+(i*biginterval));
+
+          console.log(bubble2[3])
+            setTimeout(function() {
+              addTextByDelay(bubble2[3], person2, 50);
+            }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+          }, starttime+(i*biginterval)+9000);
+
+          setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+18000);
+          
+          i = 4;
+          starttime = 6000;
+          console.log(bubble1[4]);
+            setTimeout(function() {
+              addTextByDelay(bubble1[4], person1, 50);
+            }, starttime+(i*biginterval));
+
+          console.log(bubble2[4])
+            setTimeout(function() {
+              addTextByDelay(bubble2[4], person2, 50);
+            }, starttime+(i*biginterval)+13000);
+
+          setTimeout(function() {
+              removeText(person1);
+          }, starttime+(i*biginterval)+17000);
+
+          setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+35000); 
+
+          i = 5;
+          starttime = 20000;
+           setTimeout(function() {
+              addTextByDelay(bubble1[5], person1, 50);
+            }, starttime+(i*biginterval));
+
+          console.log(bubble2[5])
+            setTimeout(function() {
+              addTextByDelay(bubble2[5], person2, 50);
+            }, starttime+(i*biginterval)+8000);
+
+          setTimeout(function() {
+              removeText(person1);
+          }, starttime+(i*biginterval)+14000);
+
+          setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+28000);
+
+
+          i = 6;
+          starttime = 30000;
+          console.log(bubble1[6]);
+            setTimeout(function() {
+              addTextByDelay(bubble1[6], person1, 50);
+            }, starttime+(i*biginterval));
+
+          console.log(bubble2[6])
+            setTimeout(function() {
+              addTextByDelay(bubble2[6], person2, 50);
+            }, starttime+(i*biginterval)+6000);
+
+          setTimeout(function() {
+              removeText(person1);
+          }, starttime+(i*biginterval)+9000);
+
+          setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+15000);
+
+          i = 7;
+          
+           console.log(bubble1[7]);
+            setTimeout(function() {
+              addTextByDelay(bubble1[7], person1, 50);
+            }, starttime+(i*biginterval));
+
+          console.log(bubble2[7])
+            setTimeout(function() {
+              addTextByDelay(bubble2[7], person2, 50);
+            }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+          }, starttime+(i*biginterval)+9000);
+
+          setTimeout(function() {
+              removeText(person2);
+           }, starttime+(i*biginterval)+15000);
+
+          setTimeout(function() {
+          addTextByDelay(backgroundStory, narration, 50);
+          }, starttime+(i*biginterval)+20000);
+          
+            setTimeout(function() {
+          removeText(narration);
+          }, starttime+(i*biginterval)+23000);
+                   
+    //   }
+    /*
        else if (dayOfWeek === 'Wednesday') {
-
+           bubble1 = [""];
+           bubble2 = [""];
        }
        else if (dayOfWeek === 'Thursday') {
+           bubble1 = [""];
+           bubble2 = [""];
 
        }
        else if (dayOfWeek === 'Friday') {
+           bubble1 = [""];
+           bubble2 = [""];
 
        }
-       else if (dayOfWeek === 'Saturday') {
-        
-       }
-       else if (dayOfWeek === 'Sunday') {
-        
-       } 
+       */
      //for(var i = 0;i<bubble1.length;i++)
      //{
 
 
      //}
-     //  social.addTweetButton(tweetMessage);
 
-  // adds a facebook-share-button to the HTML-Overlay of the channel with a custom urlToShare
-     //  social.addFacebookShareButton(urlToShare);
 }
 
 
