@@ -12,7 +12,7 @@ var dialogue = 1;
 var bubble1 = new Array();
 var bubble2 = new Array();
 var social;
-//var marker1Detected = false;
+var marker1Detected = false;
 //var marker2Detected = false;
 arel.ready(function() 
 {
@@ -37,7 +37,7 @@ arel.ready(function()
 });
 //callback funtion
 
-/*function trackingHandler(type, param)
+function trackingHandler(type, param)
 {
    console.log("z!");
     //check if there is tracking information available
@@ -47,7 +47,7 @@ arel.ready(function()
         if(type && type == arel.Events.Scene.ONTRACKING && param[0].getState() == arel.Tracking.STATE_TRACKING)
         {
            marker1Detected = true;
-           marker2Detected = true;
+           //marker2Detected = true;
         }
         //if the pattern is lost tracking, show the information to hold your phone over the pattern
         else if(type && type == arel.Events.Scene.ONTRACKING && param[0].getState() == arel.Tracking.STATE_NOTTRACKING)
@@ -57,11 +57,11 @@ arel.ready(function()
              
         }
     }
-};*/
-/*function receiveTrackingStatus(trackingValues)
+};
+function receiveTrackingStatus(trackingValues)
 {
    console.log("i!");
-    arel.Scene.setTrackingConfiguration(trackingData2.zip);
+    arel.Scene.setTrackingConfiguration(trackingData.zip);
     if(trackingValues[0] !== undefined) {         
         var trans = trackingValues[0].getTranslation();
         arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 0, function(position) {
@@ -74,9 +74,9 @@ arel.ready(function()
         arel.Scene.getScreenCoordinatesFrom3DPosition(trans, 1, function(position) {
           changeBubblePosition(1);
         })
-      }
-}; */
-/*
+      } */
+}; 
+
 function changeBubblePosition(position) {
      // if (index === 0) {
         var bubble1x = position.getX() / 2;
@@ -88,7 +88,7 @@ function changeBubblePosition(position) {
    //      var bubble2y = position.getY() / 2;
          person2.style.bottom = y + "px";
     //  }
-}*/
+}
 function convertToDay(dayOfWeek) {
   if (dayOfWeek === 1) {
     print("it's here");
@@ -115,6 +115,8 @@ function convertToDay(dayOfWeek) {
   return dayOfWeek;
 }
 
+
+
 function opening() {
    console.log("y!");
   $(".start").click(function(){
@@ -123,21 +125,21 @@ function opening() {
              $("body").delay(400).toggleClass("toTransparent", 1000);
              /*var x = document.getElementsByTagName("BODY")[0];
              console.log(x.className); */
-                if ($(".instruction").css('display') == 'none') {
-                 $(".instruction").delay(600).fadeIn("slow");
-                 $(".instruction").delay(4000).fadeOut("slow", function () {
+                if ($("#instruction").css('display') == 'none') {
+                 $("#instruction").delay(600).fadeIn("slow");
+                 $("#instruction").delay(4000).fadeOut("slow", function () {
                    // body...
-                   if ($(".instruction-2").css('display') == 'none') {
-                     $(".instruction-2").delay(600).fadeIn("slow");
+                   if ($("#instruction-2").css('display') == 'none') {
+                     $("#instruction-2").delay(600).fadeIn("slow");
                        console.log("here!");
                      $(".instruction-2").delay(4000).fadeOut("slow", function() {
-                          if ($(".instruction-3").css('display') == 'none') {
-                           $(".instruction-3").delay(600).fadeIn("slow");
-                           $(".instruction-3").delay(4000).fadeOut("slow", function() {
-                              //  if (marker1Detected && marker2Detected) {
+                          if ($("#instruction-3").css('display') == 'none') {
+                           $("#instruction-3").delay(600).fadeIn("slow");
+                           $("#instruction-3").delay(4000).fadeOut("slow", function() {
+                              // if (marker1Detected) {
                                  addConvoClasses();
                                  addNarration(); 
-                              //  }
+                            //  }
                            });
                           // console.log("here!");
                           }
@@ -148,6 +150,7 @@ function opening() {
          });
      });
 }
+
 function startConversation() {
   console.log("done.");
   console.log(scene);
@@ -159,7 +162,7 @@ function startConversation() {
       var i = 0;
       var t;
       console.log(dayOfWeek);
-     /*  if (dayOfWeekInText === 'Monday') {
+    /*   if (dayOfWeekInText === 'Monday') {
            backgroundStory = "He’d been looking at her for some time as he held on to the pole of the bus, swaying and shifting as the bus abruptly stopped and accelerated. His eyes lit up as he saw his chance. A seat finally opened up right beside her. He looked at the book she was reading and tried to unearth some association with it.";
            addTextByDelay(backgroundStory, narration, 50);
            bubble1 = ["Oh, Gone Girl. That’s a good one. Have you seen the movie?", "..........I was asking if you’ve seen the movie. Gone Girl.", "Ah I saw it by myself this weekend and I’ve been trying to find someone to talk to about that ending.", "Um um yeah I’m sorry I just thought.....", "I won’t talk to you about the movie. Promise. What’s your name?", "Joffrey."];
@@ -276,13 +279,14 @@ function startConversation() {
 
         setTimeout(function() {
               removeText(narration);
+              $( "#dialog" ).dialog( "open" );
              }, starttime+(i*biginterval)+4600);
 
-        }*/
-    // else if (dayOfWeekInText === 'Tuesday') {
+        }
+    else if (dayOfWeekInText === 'Tuesday') {
             console.log("on a tuesday");
             bubble1 = ["Hi there.", "What? No book today? Are you done already?", "Oh wow. Ouch. I wouldn’t say mediocre. More like…. Ordinary.", "Fair enough. So what can I do to make this conversation… not mediocre?", "I don’t know. I guess that’s the way things have always been. Also, apart from the few times I’ve creeped on you from the back of the bus, this is the 2nd time I’m seeing you.", "That’s an interesting way to think about it.", "Um...........ok I got one...Why do you take this bus every morning?", "You're right. That was pretty weak. It's hard to think of something...personal to ask someone."];
-            bubble2 = ["Oooh hi! Nice to see you again.", "No. Not even close. I just forgot to take it with me today. Looks like I have to settle for mediocre conversation.", "Well exactly. It’s nothing compared to the world in the book.", "Well you can start by asking me some interesting questions. I mean, why do we have to start each day with so how was work yesterday or how are you?", "But then it’s better then! We don’t know each other. There’s probably no danger in us digging a little deeper. Who else are you going to share your big bad secrets with except some random girl on the bus?", "So...do you have any interesting questions for me?", "Because it’s the cheapest option. Next.", "It’s ok. I wasn't expecting much. It was a weird exercise."];
+            bubble2 = ["Oooh hi! Nice to see you again.", "No. Not even close. I just forgot to take it with me today. Looks like I have to settle for mediocre conversation.", "Well exactly. It’s nothing compared to the world in the book.", "Well you can start by asking me some interesting questions. I mean, why do we have to start each day with so how was work yesterday or how are you?", "But then it’s better then! We don’t know each other. There’s probably no danger in us digging a little deeper. Who else are you going to share your big bad secrets with except some random girl on the bus?", "So...do you have any interesting questions for me?", "Really? That's what you're asking? Because it’s the cheapest option. Next.", "It’s ok. I wasn't expecting much. It was a weird exercise."];
             backgroundStory = "She looked back at her phone dissapointedly and he put on his headphones. He looked up at her curiously at seemingly timed intervals until she got off. He didn't quite get her but he liked her."
             starttime = 2000;
              setTimeout(function() {
@@ -445,14 +449,224 @@ function startConversation() {
           
             setTimeout(function() {
           removeText(narration);
-          }, starttime+(i*biginterval)+23000);
+          $( "#dialog" ).dialog( "open" );
+          }, starttime+(i*biginterval)+26000);
                    
-    //   }
-    /*
-       else if (dayOfWeek === 'Wednesday') {
-           bubble1 = [""];
-           bubble2 = [""];
-       }
+       } */
+     //  else if (dayOfWeek === 'Wednesday') {
+           bubble2 = ["Hi.", "Shoot.", ".....I would jump off the bus, skip work and do one of those things where you pick a random place to buy a ticket to in the airport.", "Yeah. I’ve lived here my whole life. Never left. Not even once.", "I mean, I don’t think I ever got a chance to...but I also never really wanted to...I mean it would’ve been nice to travel I guess but.....I was always comfortable here.", "I probably sound like such a bore. I never travelled anywhere because I was too comfortable.", "I suppose so.", "No it’s fine... I was the one asked you to ask a personal question. I should be apologizing. You’re probably thinking this woman on the bus is super weird.", "I cannot imagine why he wouldn’t be. Well, this is my stop. See you again tomorrow.", "So, what would you do?",];
+           bubble1 = ["Hi.", "So I think I have a question for you.", "What would you do right now if there wouldn’t be any repercussions whatsoever?", "Really? If you could do ANYTHING?", "Really? Not even once?............Any particular reason?", "Oh, understandable.", "No! Not at all. Um....I mean what’s the reason to leave if you feel like you have everything you want right here with you...if you have that something there’s no reason to move right?", "I didn’t mean to pry. I’m sorry.", "No not at all. I make it a habit of asking and revealing personal things. Yesterday I told the bus driver about my irritable bowel syndrome. He didn’t look too pleased.", "Wait you never asked me what I would do…. If there weren’t any repercussions.", "I would kiss you."];
+           backgroundStory = "The doors of the bus were about to close. He wasn’t even sure if she’d heard him properly. She was trying to make it outside. But he saw a smile from the window as she walked past."
+           
+           starttime = 2000;
+           setTimeout(function() {
+              addTextByDelay(bubble1[0], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[0], person2, 50);
+          }, starttime+(i*biginterval)+3000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+7000);
+
+          i = 1;
+
+           setTimeout(function() {
+              addTextByDelay(bubble1[1], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[1], person2, 50);
+          }, starttime+(i*biginterval)+3000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+7000);
+
+          i = 2;
+
+          setTimeout(function() {
+              addTextByDelay(bubble1[2], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[2], person2, 50);
+          }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+7000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+15000);
+
+          i = 3;
+
+          starttime = 5000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[3], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[3], person2, 50);
+          }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+7000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+15000);
+
+          i = 4;
+
+            setTimeout(function() {
+              addTextByDelay(bubble1[4], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[4], person2, 50);
+          }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+12000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+18000);
+
+          i = 5;
+          starttime = 10000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[5], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[5], person2, 50);
+          }, starttime+(i*biginterval)+5000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+12000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+18000);
+
+          i = 6;
+          starttime = 12000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[6], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[6], person2, 50);
+          }, starttime+(i*biginterval)+16000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+26000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+29000);
+
+          i = 7;
+
+          starttime = 32000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[7], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[7], person2, 50);
+          }, starttime+(i*biginterval)+10000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+24000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+28000);
+
+
+
+          i = 8;
+
+          starttime = 48000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[8], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[8], person2, 50);
+          }, starttime+(i*biginterval)+10000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+20000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+22000);
+
+          i = 9;
+
+          starttime = 63000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[9], person1, 50);
+          }, starttime+(i*biginterval));
+
+           setTimeout(function() {
+              addTextByDelay(bubble2[9], person2, 50);
+          }, starttime+(i*biginterval)+10000);
+
+          setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+22000);
+
+          setTimeout(function() {
+            removeText(person2);
+          }, starttime+(i*biginterval)+24000);
+
+          i = 10;
+          starttime = 78000;
+            setTimeout(function() {
+              addTextByDelay(bubble1[10], person1, 50);
+          }, starttime+(i*biginterval));
+
+
+            setTimeout(function() {
+              removeText(person1);
+             }, starttime+(i*biginterval)+32000);
+
+
+          setTimeout(function() {
+          addTextByDelay(backgroundStory, narration, 50);
+          }, starttime+(i*biginterval)+20000);
+          
+            setTimeout(function() {
+          removeText(narration);
+          $( "#dialog" ).dialog( "open" );
+          }, starttime+(i*biginterval)+42000);
+
+          
+
+      /* }
        else if (dayOfWeek === 'Thursday') {
            bubble1 = [""];
            bubble2 = [""];
@@ -471,6 +685,34 @@ function startConversation() {
      //}
 
 }
+
+$(function() {
+    console.log("dialog");
+    $("#dialog").dialog({
+      autoOpen: false,
+      maxWidth:600,
+      maxHeight: 500,
+      width: 300,
+      height: 300,
+      show: {
+        effect: "fade",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      }
+    });
+
+    $("#home").click(function() {
+        console.log("reload");
+        location.reload();
+    });
+    $("#refresh").click(function() {
+         console.log("restart");
+         startConversation();
+    });
+  });
 
 
 

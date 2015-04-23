@@ -5,22 +5,41 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- Integrates the arel javascript bridge -->
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <script src="jquery-ui.js"></script>
 	    <script type="text/javascript" src="http://dev.junaio.com/arel/js/arel.js"></script>
   		<script type="text/javascript" src="script.js"></script>
   		<script type="text/javascript" src="arel_plugin_social_v1.js"></script>
+  		<link rel="stylesheet" href="jquery-ui.css">
  	    <link rel="stylesheet" type="text/css" href="styles.css">
  	    <!-- Includes application logic -->
   		 <title>As Told on the B54</title>
 	</head>
 <body class="fp">
+		
+		<div id="dialog">
+  			<p class="dialog-desc">Thank you for reading! You can get more of the story tomorrow on the B54!</p>
+  			<p class="dialog-desc">What would you like to do?</p>
+  			<figure class="images">
+	  			<img class="pop-up-image" id="refresh" width="32" height="32" src="images/refresh4.png"/>
+	  			<img class="pop-up-image" id="home" width="32" height="32" src="images/home152.png" />
+  			</figure>
+		</div>
 		<main class="opening">
+			<img class="menu" width="40" height="40" src="images/list26.png"/>
 			<img class="app-icon" src ="images/speech.png"/>
-			<button class="start">START</button>
+			<h1 class="title"> As told on the B54.</h1>
+			<img class="start" width="64" height="64" src="images/next15.png"/>
+		</main>
+		<main class="about">
+
+		</main>
+		<main class="creator">
+
 		</main>
 		<div id="instructions">
-			<p class="instruction"> Find the trackable image.</p>
-			<p class="instruction-2"> Try to keep the camera still.</p>
-			<p class="instruction-3">If nothing shows up, focus on the trackables.</p>
+			<p id="instruction"> Find the trackable image.</p>
+			<p id="instruction-2"> Try to keep the camera still.</p>
+			<p id="instruction-3">If nothing shows up, focus on the trackables.</p>
 		</div>
 		<p id="person1"></p>
 		<p id="person2"></p>
